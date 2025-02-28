@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{{  url_for('static', filename='style.css') }}"/>
+    <meta charset="UTF-8">
+    <title>Search Results</title>
+</head>
+<body>
+<h2>Search</h2>
+    <form action="/" method="POST">
+        <input type="hidden" name="action" value="search_term">
+        <label for="term">Query term:</label>
+        <input type="text" id="term" name="term" required>
+        <button type="submit">Search</button>
+    </form>
+
+<h2>Results </h2>
+<ul>
+        {% for name in names %}
+            <li><strong><a href="{{ url_for('display_note', note_name=name) }}">{{ name }}</a> </strong> </li>
+        {% else %}
+            <li>No notes available.</li>
+        {% endfor %}
+    </ul>
+
+<a href="{{ url_for('root') }}">Back to main page</a>
+</body>
+</html>

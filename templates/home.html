@@ -1,0 +1,40 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{{  url_for('static', filename='style.css') }}"/>
+    <meta charset="UTF-8">
+    <title>Welcome to the NoteTaker!</title>
+</head>
+<body>
+<h1> A Notetaker and Its Results</h1>
+<h2>Search</h2>
+    <form action="/" method="POST">
+        <input type="hidden" name="action" value="search_term">
+        <label for="term">Query term:</label>
+        <input type="text" id="term" name="term" required>
+        <button type="submit">Search</button>
+    </form>
+
+<h2>All Notes</h2>
+    <ul>
+        {% for name in names %}
+            <li><strong><a href="{{ url_for('display_note', note_name=name) }}">{{ name }}</a> </strong> </li>
+        {% else %}
+            <li>No notes available.</li>
+        {% endfor %}
+    </ul>
+
+<h2>Add a New Note</h2>
+    <form action="/" method="POST">
+        <input type="hidden" name="action" value="add_note">
+        <label for="note_name">Note Name:</label>
+        <input type="text" id="note_name" name="note_name" required>
+        <br>
+        <label for="note_text">Note Text:</label>
+        <textarea id="note_text" name="note_text" required></textarea>
+        <br>
+        <button type="submit">Add Note</button>
+    </form>
+</body>
+</html>

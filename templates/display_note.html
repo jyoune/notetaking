@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{{  url_for('static', filename='style.css') }}"/>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1>{{ note.name }}</h1>
+    <p>{{ note.text }}</p>
+    <a href="{{ url_for('root') }}">Back to main page</a>
+</body>
+</html>
