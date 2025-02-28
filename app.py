@@ -24,8 +24,6 @@ def root():
             new_note = {'name': note_name, 'text': note_text}
             response = requests.post(f"{FASTAPI_URL}/add", json=new_note)
             return redirect("/")
-    # elif request.method == 'GET':
-    #     action = request.form.get('action')
         elif action == 'search_term':
             term = request.form.get('term')
             return redirect(url_for("search_term", term=term))
@@ -59,14 +57,5 @@ def add_note(name: str, text: str):
 
 
 if __name__ == "__main__":
-    app.run(host="127.0.0.1", port=5000, debug=True)
+    app.run(host="127.0.0.1", port=5000)
 
-# todo: make templates, get responses from fastapi and fill templates with those details
-# 1. make home template, fill with list of notes (half done?)
-# 2. add search bar to home template?
-# 3. add note-adding to home template?
-# 4. make new page / template for each note
-# 5. style sheet? (search box, results box same as all notes box?, add note box)
-#
-# todo streamlit:
-# same thing but with their shit
